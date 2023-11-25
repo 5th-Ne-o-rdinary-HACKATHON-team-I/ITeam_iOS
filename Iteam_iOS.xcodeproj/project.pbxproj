@@ -186,10 +186,6 @@
 		0910367F2B1194500065A229 /* Present */ = {
 			isa = PBXGroup;
 			children = (
-				091036D62B1266B00065A229 /* Popuo */,
-				091036C32B1248060065A229 /* Login */,
-				091036C02B12298E0065A229 /* MyPage */,
-				091036BB2B1220D80065A229 /* Detail */,
 				09D4221E2B11E27B00A81F15 /* AddHistory */,
 				091036B22B11FFB80065A229 /* Home */,
 				091036642B1184C20065A229 /* ViewController.swift */,
@@ -415,6 +411,8 @@
 				091036A72B11B3010065A229 /* BaseViewController.swift in Sources */,
 				091036BA2B1215CE0065A229 /* BodyTableViewCell.swift in Sources */,
 				091036612B1184C20065A229 /* AppDelegate.swift in Sources */,
+				09D4222A2B1279D700A81F15 /* CardCell.swift in Sources */,
+				09D422222B11EE7200A81F15 /* TextField+.swift in Sources */,
 				091036B12B11EA440065A229 /* tempEnum.swift in Sources */,
 				091036E12B127B310065A229 /* thirty2View.swift in Sources */,
 				09D4222A2B1279D700A81F15 /* CardCell.swift in Sources */,
