@@ -62,7 +62,7 @@
 		0910369A2B11B2600065A229 /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 		0910369B2B11B2600065A229 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		091036A62B11B3010065A229 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		C10835452B1202350034AD57 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = ../../../../../CalculatorViewController.swift; sourceTree = "<group>"; };
+		C10835452B1202350034AD57 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculatorViewController.swift; path = Iteam_iOS/Present/Calculator/CalculatorViewController.swift; sourceTree = SOURCE_ROOT; };
 		C10835472B121FF60034AD57 /* CalculcatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculcatorTableViewCell.swift; sourceTree = "<group>"; };
 		C10835492B122BDD0034AD57 /* CalculatorTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
