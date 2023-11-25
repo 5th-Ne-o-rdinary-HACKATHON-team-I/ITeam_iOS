@@ -37,6 +37,23 @@
 		091036B12B11EA440065A229 /* tempEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036B02B11EA440065A229 /* tempEnum.swift */; };
 		091036B42B11FFC40065A229 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036B32B11FFC40065A229 /* HomeViewController.swift */; };
 		091036B82B1210740065A229 /* bodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036B72B1210740065A229 /* bodyView.swift */; };
+		091036BA2B1215CE0065A229 /* BodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036B92B1215CE0065A229 /* BodyTableViewCell.swift */; };
+		091036BD2B1220FE0065A229 /* DetailHalbooViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036BC2B1220FE0065A229 /* DetailHalbooViewController.swift */; };
+		091036BF2B1221220065A229 /* DetailSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036BE2B1221220065A229 /* DetailSubViewController.swift */; };
+		091036C22B12299C0065A229 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036C12B12299C0065A229 /* MyViewController.swift */; };
+		091036C52B1248120065A229 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036C42B1248120065A229 /* LoginViewController.swift */; };
+		091036C82B124B7E0065A229 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 091036C72B124B7E0065A229 /* KakaoSDK */; };
+		091036CA2B124B7E0065A229 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 091036C92B124B7E0065A229 /* KakaoSDKAuth */; };
+		091036CC2B124B7E0065A229 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 091036CB2B124B7E0065A229 /* KakaoSDKCommon */; };
+		091036CE2B12543E0065A229 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036CD2B12543E0065A229 /* LoginService.swift */; };
+		091036D12B12544C0065A229 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036D02B12544C0065A229 /* LoginModel.swift */; };
+		091036D42B125F6F0065A229 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 091036D32B125F6F0065A229 /* Lottie */; };
+		091036D82B1266C00065A229 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036D72B1266C00065A229 /* PopupViewController.swift */; };
+		091036DA2B1267B00065A229 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036D92B1267B00065A229 /* UserInfo.swift */; };
+		091036DD2B1273B50065A229 /* thirtyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036DC2B1273B50065A229 /* thirtyView.swift */; };
+		091036DF2B127A760065A229 /* thousndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036DE2B127A760065A229 /* thousndView.swift */; };
+		091036E12B127B310065A229 /* thirty2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036E02B127B310065A229 /* thirty2View.swift */; };
+		091036E32B1281060065A229 /* thousnd2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036E22B1281060065A229 /* thousnd2View.swift */; };
 		09D4221D2B11D16200A81F15 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09D4221C2B11D16200A81F15 /* IQKeyboardManagerSwift */; };
 		09D422202B11E47A00A81F15 /* InstallmentPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */; };
 		09D422222B11EE7200A81F15 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D422212B11EE7200A81F15 /* TextField+.swift */; };
@@ -76,6 +93,19 @@
 		091036AD2B11E2F70065A229 /* Iteam_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iteam_iOS.entitlements; sourceTree = "<group>"; };
 		091036B32B11FFC40065A229 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		091036B72B1210740065A229 /* bodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bodyView.swift; sourceTree = "<group>"; };
+		091036B92B1215CE0065A229 /* BodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTableViewCell.swift; sourceTree = "<group>"; };
+		091036BC2B1220FE0065A229 /* DetailHalbooViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHalbooViewController.swift; sourceTree = "<group>"; };
+		091036BE2B1221220065A229 /* DetailSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSubViewController.swift; sourceTree = "<group>"; };
+		091036C12B12299C0065A229 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		091036C42B1248120065A229 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		091036CD2B12543E0065A229 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		091036D02B12544C0065A229 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		091036D72B1266C00065A229 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		091036D92B1267B00065A229 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		091036DC2B1273B50065A229 /* thirtyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirtyView.swift; sourceTree = "<group>"; };
+		091036DE2B127A760065A229 /* thousndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thousndView.swift; sourceTree = "<group>"; };
+		091036E02B127B310065A229 /* thirty2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirty2View.swift; sourceTree = "<group>"; };
+		091036E22B1281060065A229 /* thousnd2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thousnd2View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +117,12 @@
 				09D4221D2B11D16200A81F15 /* IQKeyboardManagerSwift in Frameworks */,
 				091036762B118E9E0065A229 /* SnapKit in Frameworks */,
 				0910367C2B118EB60065A229 /* Then in Frameworks */,
+				091036CC2B124B7E0065A229 /* KakaoSDKCommon in Frameworks */,
+				091036D42B125F6F0065A229 /* Lottie in Frameworks */,
 				091036862B11AAB80065A229 /* Moya in Frameworks */,
 				091036792B118EA80065A229 /* Alamofire in Frameworks */,
+				091036C82B124B7E0065A229 /* KakaoSDK in Frameworks */,
+				091036CA2B124B7E0065A229 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +168,7 @@
 			children = (
 				091036822B1194650065A229 /* tempModel.swift */,
 				091036B02B11EA440065A229 /* tempEnum.swift */,
+				091036D02B12544C0065A229 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +178,7 @@
 			children = (
 				091036802B11945F0065A229 /* tempService.swift */,
 				091036872B11ABA70065A229 /* APIConstant.swift */,
+				091036CD2B12543E0065A229 /* LoginService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -150,6 +186,10 @@
 		0910367F2B1194500065A229 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				091036D62B1266B00065A229 /* Popuo */,
+				091036C32B1248060065A229 /* Login */,
+				091036C02B12298E0065A229 /* MyPage */,
+				091036BB2B1220D80065A229 /* Detail */,
 				09D4221E2B11E27B00A81F15 /* AddHistory */,
 				091036B22B11FFB80065A229 /* Home */,
 				091036642B1184C20065A229 /* ViewController.swift */,
@@ -174,6 +214,7 @@
 			children = (
 				091036A52B11B2E40065A229 /* UI */,
 				091036892B11B1050065A229 /* Extension */,
+				091036D92B1267B00065A229 /* UserInfo.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -215,8 +256,46 @@
 			children = (
 				091036B32B11FFC40065A229 /* HomeViewController.swift */,
 				091036B72B1210740065A229 /* bodyView.swift */,
+				091036B92B1215CE0065A229 /* BodyTableViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		091036BB2B1220D80065A229 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				091036BC2B1220FE0065A229 /* DetailHalbooViewController.swift */,
+				091036BE2B1221220065A229 /* DetailSubViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		091036C02B12298E0065A229 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				091036C12B12299C0065A229 /* MyViewController.swift */,
+				091036DC2B1273B50065A229 /* thirtyView.swift */,
+				091036DE2B127A760065A229 /* thousndView.swift */,
+				091036E02B127B310065A229 /* thirty2View.swift */,
+				091036E22B1281060065A229 /* thousnd2View.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		091036C32B1248060065A229 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				091036C42B1248120065A229 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		091036D62B1266B00065A229 /* Popuo */ = {
+			isa = PBXGroup;
+			children = (
+				091036D72B1266C00065A229 /* PopupViewController.swift */,
+			);
+			path = Popuo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +321,10 @@
 				091036852B11AAB80065A229 /* Moya */,
 				09D4221C2B11D16200A81F15 /* IQKeyboardManagerSwift */,
 				091036AB2B11E1880065A229 /* FirebaseMessaging */,
+				091036C72B124B7E0065A229 /* KakaoSDK */,
+				091036C92B124B7E0065A229 /* KakaoSDKAuth */,
+				091036CB2B124B7E0065A229 /* KakaoSDKCommon */,
+				091036D32B125F6F0065A229 /* Lottie */,
 			);
 			productName = Iteam_iOS;
 			productReference = 0910365D2B1184C20065A229 /* Iteam_iOS.app */;
@@ -278,6 +361,8 @@
 				091036842B11AAB80065A229 /* XCRemoteSwiftPackageReference "Moya" */,
 				09D4221B2B11D16200A81F15 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				091036AA2B11E1880065A229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				091036C62B124B7E0065A229 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				091036D22B125F6F0065A229 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 0910365E2B1184C20065A229 /* Products */;
 			projectDirPath = "";
@@ -315,14 +400,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091036CE2B12543E0065A229 /* LoginService.swift in Sources */,
+				091036C52B1248120065A229 /* LoginViewController.swift in Sources */,
 				0910368B2B11B1130065A229 /* Color+.swift in Sources */,
 				091036832B1194650065A229 /* tempModel.swift in Sources */,
 				0910368F2B11B1890065A229 /* String+.swift in Sources */,
+				091036D12B12544C0065A229 /* LoginModel.swift in Sources */,
 				091036652B1184C20065A229 /* ViewController.swift in Sources */,
+				091036E32B1281060065A229 /* thousnd2View.swift in Sources */,
+				091036BF2B1221220065A229 /* DetailSubViewController.swift in Sources */,
 				091036882B11ABA70065A229 /* APIConstant.swift in Sources */,
 				091036B82B1210740065A229 /* bodyView.swift in Sources */,
+				091036C22B12299C0065A229 /* MyViewController.swift in Sources */,
 				091036A72B11B3010065A229 /* BaseViewController.swift in Sources */,
+				091036BA2B1215CE0065A229 /* BodyTableViewCell.swift in Sources */,
 				091036612B1184C20065A229 /* AppDelegate.swift in Sources */,
+				091036B12B11EA440065A229 /* tempEnum.swift in Sources */,
+				091036E12B127B310065A229 /* thirty2View.swift in Sources */,
 				09D4222A2B1279D700A81F15 /* CardCell.swift in Sources */,
 				09D422222B11EE7200A81F15 /* TextField+.swift in Sources */,
 				091036632B1184C20065A229 /* SceneDelegate.swift in Sources */,
@@ -330,7 +424,12 @@
 				09D422242B120CB700A81F15 /* Label+.swift in Sources */,
 				09D422202B11E47A00A81F15 /* InstallmentPaymentVC.swift in Sources */,
 				091036912B11B2120065A229 /* Fonts+.swift in Sources */,
+				091036BD2B1220FE0065A229 /* DetailHalbooViewController.swift in Sources */,
 				091036B42B11FFC40065A229 /* HomeViewController.swift in Sources */,
+				091036DF2B127A760065A229 /* thousndView.swift in Sources */,
+				091036DA2B1267B00065A229 /* UserInfo.swift in Sources */,
+				091036D82B1266C00065A229 /* PopupViewController.swift in Sources */,
+				091036DD2B1273B50065A229 /* thirtyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +685,22 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		091036C62B124B7E0065A229 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		091036D22B125F6F0065A229 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		09D4221B2B11D16200A81F15 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -621,6 +736,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 091036AA2B11E1880065A229 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		091036C72B124B7E0065A229 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091036C62B124B7E0065A229 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		091036C92B124B7E0065A229 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091036C62B124B7E0065A229 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		091036CB2B124B7E0065A229 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091036C62B124B7E0065A229 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		091036D32B125F6F0065A229 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 091036D22B125F6F0065A229 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 		09D4221C2B11D16200A81F15 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

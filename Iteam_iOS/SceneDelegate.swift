@@ -6,16 +6,26 @@
 //
 
 import UIKit
+import KakaoSDKAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+         if let url = URLContexts.first?.url {
+             if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                 _ = AuthController.handleOpenUrl(url: url)
+             }
+         }
+     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene) // SceneDelegate의 프로퍼티에 설정해줌
-        let mainViewController = HomeViewController() // 맨 처음 보여줄 ViewController
+        let mainViewController = UINavigationController(rootViewController: MyViewController())
+        mainViewController.navigationBar.isHidden = true
+        // 맨 처음 보여줄 ViewController
  
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
