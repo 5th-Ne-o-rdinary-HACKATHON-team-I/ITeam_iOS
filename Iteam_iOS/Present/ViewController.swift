@@ -5,8 +5,6 @@
 //  Created by 최지철 on 2023/11/25.
 //
 
-//  test
-
 import UIKit
 import Then
 import SnapKit
