@@ -9,16 +9,22 @@ import UIKit
 import Then
 import SnapKit
 
+enum WhichTextField {
+    case installmentMonth
+    case interestFree
+}
+
 class CalculatorViewController: BaseViewController {
     
     
-    static let mainRedColor = UIColor(hexString: "FF3E23")
+    static let mainRedColor = UIColor(hexString: "FD442B")
     static let gray1 = UIColor(hexString: "F2F2F2")
     static let gray2 = UIColor(hexString: "D9D9D9")
     static let gray3 = UIColor(hexString: "BFBEBE")
     
-    private var tableView: UITableView!
     
+    private var tableView: UITableView!
+    var whichTextField: WhichTextField = .installmentMonth
 
     let dateData = ["3 개월", "6 개월", "9 개월", "12 개월", "직접 입력하기"]
     
@@ -37,7 +43,6 @@ class CalculatorViewController: BaseViewController {
         $0.textColor = .black
         $0.font = UIFont.pretendard(.Medium, size: 16)
         $0.sizeToFit()
-
     }
     
     private let installmentAmountTextField = UITextField().then{
@@ -51,14 +56,26 @@ class CalculatorViewController: BaseViewController {
     }
     
     //할부 개월 라벨
-    private let installmentMonthLabel = UILabel().then{
+    private var installmentMonthLabel = UILabel().then{
         $0.text = "할부 개월"
         $0.textColor = .black
         $0.font = UIFont.pretendard(.Medium, size: 16)
         $0.sizeToFit()
     }
     
-    private let installmentMonthTextField = UITextField().then{
+    //할부 개월 Input Label
+    private var installmentMonthInputLabel = UILabel().then{
+        $0.backgroundColor = gray1
+        $0.layer.cornerRadius = 10
+        $0.layer.masksToBounds = true
+        $0.font = UIFont.pretendard(.Regular, size: 16)
+        $0.sizeToFit()
+        $0.text = "   00개월"
+        $0.textColor = .systemGray2
+        $0.isUserInteractionEnabled = true
+    }
+    
+    private var installmentMonthTextField = UITextField().then{
         $0.backgroundColor = gray1
         $0.layer.cornerRadius = 10
         $0.font = UIFont.pretendard(.Regular, size: 16)
@@ -69,14 +86,26 @@ class CalculatorViewController: BaseViewController {
     }
     
     //무이자 개월 라벨
-    private let interestFreeMonthLabel = UILabel().then{
+    private var interestFreeMonthLabel = UILabel().then{
         $0.text = "무이자 개월"
         $0.textColor = .black
         $0.font = UIFont.pretendard(.Medium, size: 16)
         $0.sizeToFit()
     }
     
-    private let interestFreeMonthTextField = UITextField().then{
+    //무이자 개월 Input Label
+    private var interestFreeMonthInputLabel = UILabel().then{
+        $0.backgroundColor = gray1
+        $0.layer.cornerRadius = 10
+        $0.layer.masksToBounds = true
+        $0.font = UIFont.pretendard(.Regular, size: 16)
+        $0.sizeToFit()
+        $0.text = "   0개월"
+        $0.textColor = .systemGray2
+        $0.isUserInteractionEnabled = true
+    }
+    
+    private var interestFreeMonthTextField = UITextField().then{
         $0.backgroundColor = gray1
         $0.layer.cornerRadius = 10
         $0.font = UIFont.pretendard(.Regular, size: 16)
@@ -87,14 +116,14 @@ class CalculatorViewController: BaseViewController {
     }
     
     //이자율 라벨
-    private let interestRateLabel = UILabel().then{
+    private var interestRateLabel = UILabel().then{
         $0.text = "이자율"
         $0.textColor = .black
         $0.font = UIFont.pretendard(.Medium, size: 16)
         $0.sizeToFit()
     }
     
-    private let interestRateTextField = UITextField().then{
+    private var interestRateTextField = UITextField().then{
         $0.backgroundColor = gray1
         $0.layer.cornerRadius = 10
         $0.font = UIFont.pretendard(.Regular, size: 16)
@@ -103,6 +132,17 @@ class CalculatorViewController: BaseViewController {
         $0.leftViewMode = .always
         $0.placeholder = "0.00%"
     }
+    
+    //계산기 버튼
+    private var calculateButton = UIButton().then{
+        $0.backgroundColor = mainRedColor
+        $0.setTitle("계산하기", for: .normal)
+        $0.titleLabel?.font = UIFont.pretendard(.Regular, size: 16)
+        $0.layer.cornerRadius = 15
+        $0.alpha = 0.0
+    }
+    
+    
     
     
     func setTableView(){
@@ -123,7 +163,6 @@ class CalculatorViewController: BaseViewController {
             $0.leading.equalTo(interestRateTextField.snp.leading)
             $0.trailing.equalTo(interestRateTextField.snp.trailing)
             $0.height.equalTo(193)
-            
         }
     }
     
@@ -190,6 +229,8 @@ class CalculatorViewController: BaseViewController {
         tableView.alpha = 0.0
         self.view.addSubview(tableView)
         
+        self.whichTextField = .installmentMonth
+        
         tableView.snp.makeConstraints{
             $0.top.equalTo(installmentMonthTextField.snp.bottom).offset(4)
             $0.leading.equalTo(installmentMonthTextField.snp.leading)
@@ -222,6 +263,8 @@ class CalculatorViewController: BaseViewController {
         tableView.alpha = 0.0
         self.view.addSubview(tableView)
         
+        self.whichTextField = .interestFree
+        
         tableView.snp.makeConstraints{
             $0.top.equalTo(interestFreeMonthTextField.snp.bottom).offset(4)
             $0.leading.equalTo(installmentMonthTextField.snp.leading)
@@ -232,6 +275,12 @@ class CalculatorViewController: BaseViewController {
         
         UIView.animate(withDuration: duration, animations: {
             self.tableView.alpha = 1.0
+        })
+    }
+    
+    func fadeIn_calculateButton(duration: TimeInterval = 1.0){
+        UIView.animate(withDuration: duration, animations: {
+            self.calculateButton.alpha = 1.0
         })
     }
 
@@ -248,6 +297,30 @@ class CalculatorViewController: BaseViewController {
         installmentMonthTextField.delegate = self
         interestFreeMonthTextField.delegate = self
         interestRateTextField.delegate = self
+        
+        
+        
+        //할부 개월
+        let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(labelTapped1(_:)))
+        installmentMonthInputLabel.addGestureRecognizer(tapGesture1)
+        
+        //무이자 개월
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(labelTapped2(_:)))
+        interestFreeMonthInputLabel.addGestureRecognizer(tapGesture2)
+        
+
+    }
+    
+    @objc func labelTapped1(_ sender: UITapGestureRecognizer){
+        
+        self.moveLabelDown_installmentMonth()
+        self.fadeIn_installmentMonth(duration: 0.5)
+    }
+    
+    @objc func labelTapped2(_ sender: UITapGestureRecognizer){
+        
+        self.moveLabelDown_interestFreeMonth()
+        self.fadeIn_interestFreeMonth(duration: 0.5)
     }
     
     override func addview() {
@@ -258,12 +331,16 @@ class CalculatorViewController: BaseViewController {
         
         self.view.addSubview(installmentMonthLabel) //할부 개월 라벨
         self.view.addSubview(installmentMonthTextField)
+        self.view.addSubview(installmentMonthInputLabel)
         
         self.view.addSubview(interestFreeMonthLabel) //무이자 개월 라벨
         self.view.addSubview(interestFreeMonthTextField)
+        self.view.addSubview(interestFreeMonthInputLabel)
         
         self.view.addSubview(interestRateLabel) //이자율 라벨
         self.view.addSubview(interestRateTextField)
+        
+        self.view.addSubview(calculateButton)//계산 버튼
         
     }
     
@@ -304,6 +381,13 @@ class CalculatorViewController: BaseViewController {
             $0.height.equalTo(37)
         }
         
+        installmentMonthInputLabel.snp.makeConstraints{
+            $0.top.equalTo(installmentMonthLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(titleLabel)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.height.equalTo(37)
+        }
+        
         //무이자 개월 라벨
         interestFreeMonthLabel.snp.makeConstraints{
             $0.top.equalTo(installmentMonthTextField.snp.bottom).offset(20)
@@ -312,6 +396,13 @@ class CalculatorViewController: BaseViewController {
         }
         
         interestFreeMonthTextField.snp.makeConstraints{
+            $0.top.equalTo(interestFreeMonthLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(titleLabel)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.height.equalTo(37)
+        }
+        
+        interestFreeMonthInputLabel.snp.makeConstraints{
             $0.top.equalTo(interestFreeMonthLabel.snp.bottom).offset(8)
             $0.leading.equalTo(titleLabel)
             $0.trailing.equalToSuperview().offset(-16)
@@ -331,6 +422,14 @@ class CalculatorViewController: BaseViewController {
             $0.trailing.equalToSuperview().offset(-16)
             $0.height.equalTo(37)
         }
+        
+        //계산 버튼
+        calculateButton.snp.makeConstraints{
+            $0.height.equalTo(37)
+            $0.width.equalTo(316)
+            $0.leading.equalToSuperview().offset(37)
+            $0.top.equalTo(interestRateTextField.snp.bottom).offset(20)
+        }
     }
 }
 
@@ -339,19 +438,9 @@ extension CalculatorViewController: UITextFieldDelegate{
         textField.backgroundColor = .white
         textField.layer.borderColor = CalculatorViewController.gray3.cgColor
         textField.layer.borderWidth = 1
-        
-        
-        if textField == installmentMonthTextField {
-            moveLabelDown_installmentMonth()
-            fadeIn_installmentMonth(duration: 0.5)
-        }
-        
-        else if textField == interestFreeMonthTextField {
-            moveLabelDown_interestFreeMonth()
-            fadeIn_interestFreeMonth(duration: 0.5)
-        }
-        
     }
+    
+
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text == "" {
@@ -359,15 +448,30 @@ extension CalculatorViewController: UITextFieldDelegate{
             textField.backgroundColor = CalculatorViewController.gray1
         }
         
-        if textField == installmentMonthTextField {
+        else if textField == installmentAmountTextField {
+            
+        }
+        
+        else if textField == installmentMonthLabel {
+            installmentMonthInputLabel.text = "   " + textField.text! + " 개월"
+            installmentMonthInputLabel.isHidden = false
+            textField.isHidden = true
             moveLabelUp_installmentMonth()
             tableView.alpha = 0.0
         }
         
         else if textField == interestFreeMonthTextField {
+            interestFreeMonthInputLabel.text = "   " + textField.text! + " 개월"
+            interestFreeMonthInputLabel.isHidden = false
+            textField.isHidden = true
             moveLabelUp_interestFreeMonth()
             tableView.alpha = 0.0
         }
+        
+        if interestRateTextField.text != "" {
+            self.fadeIn_calculateButton()
+        }
+        
         
     }
 }
@@ -416,12 +520,45 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource{
         cell.dateLabel.textColor = .black
         
         let date = dateData[indexPath.row]
-        if date == "직접 입력하기"{
-            installmentMonthTextField.text = ""
-            installmentMonthLabel.becomeFirstResponder()
-        }
-        else{
-            installmentMonthTextField.text = date
+        
+        switch self.whichTextField{
+        case .installmentMonth:
+            if date == "직접 입력하기"{
+                installmentMonthTextField.isUserInteractionEnabled = true
+                installmentMonthInputLabel.isHidden = true
+                moveLabelUp_installmentMonth()
+                tableView.alpha = 0.0
+            }
+            else{
+                installmentMonthInputLabel.text = "   " + date
+                installmentMonthInputLabel.backgroundColor = .white
+                installmentMonthInputLabel.textColor = .black
+                installmentMonthInputLabel.layer.borderWidth = 1
+                installmentMonthInputLabel.layer.borderColor = CalculatorViewController.gray3.cgColor
+                
+                moveLabelUp_installmentMonth()
+                tableView.alpha = 0.0
+                self.view.endEditing(true)
+            }
+        
+        case .interestFree:
+            if date == "직접 입력하기"{
+                interestFreeMonthTextField.isUserInteractionEnabled = true
+                interestFreeMonthInputLabel.isHidden = true
+                moveLabelUp_interestFreeMonth()
+                tableView.alpha = 0.0
+            }
+            else{
+                interestFreeMonthInputLabel.text = "   " + date
+                interestFreeMonthInputLabel.backgroundColor = .white
+                interestFreeMonthInputLabel.textColor = .black
+                interestFreeMonthInputLabel.layer.borderWidth = 1
+                interestFreeMonthInputLabel.layer.borderColor = CalculatorViewController.gray3.cgColor
+                
+                moveLabelUp_interestFreeMonth()
+                tableView.alpha = 0.0
+                self.view.endEditing(true)
+            }
         }
     }
 }
