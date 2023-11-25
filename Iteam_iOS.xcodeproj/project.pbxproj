@@ -38,6 +38,10 @@
 		091036B42B11FFC40065A229 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036B32B11FFC40065A229 /* HomeViewController.swift */; };
 		091036B82B1210740065A229 /* bodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036B72B1210740065A229 /* bodyView.swift */; };
 		09D4221D2B11D16200A81F15 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09D4221C2B11D16200A81F15 /* IQKeyboardManagerSwift */; };
+		09D422202B11E47A00A81F15 /* InstallmentPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */; };
+		09D422222B11EE7200A81F15 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D422212B11EE7200A81F15 /* TextField+.swift */; };
+		09D422242B120CB700A81F15 /* Label+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D422232B120CB700A81F15 /* Label+.swift */; };
+		09D4222A2B1279D700A81F15 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D422292B1279D700A81F15 /* CardCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		0910369A2B11B2600065A229 /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 		0910369B2B11B2600065A229 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		091036A62B11B3010065A229 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallmentPaymentVC.swift; sourceTree = "<group>"; };
+		09D422212B11EE7200A81F15 /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
+		09D422232B120CB700A81F15 /* Label+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+.swift"; sourceTree = "<group>"; };
+		09D422292B1279D700A81F15 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		091036A82B11E0750065A229 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		091036AD2B11E2F70065A229 /* Iteam_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Iteam_iOS.entitlements; sourceTree = "<group>"; };
 		091036B02B11EA440065A229 /* tempEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempEnum.swift; sourceTree = "<group>"; };
@@ -143,6 +151,7 @@
 		0910367F2B1194500065A229 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				09D4221E2B11E27B00A81F15 /* AddHistory */,
 				091036B22B11FFB80065A229 /* Home */,
 				091036642B1184C20065A229 /* ViewController.swift */,
 			);
@@ -155,6 +164,8 @@
 				0910368A2B11B1130065A229 /* Color+.swift */,
 				0910368E2B11B1890065A229 /* String+.swift */,
 				091036902B11B2120065A229 /* Fonts+.swift */,
+				09D422212B11EE7200A81F15 /* TextField+.swift */,
+				09D422232B120CB700A81F15 /* Label+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -193,6 +204,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		09D4221E2B11E27B00A81F15 /* AddHistory */ = {
+			isa = PBXGroup;
+			children = (
+				09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */,
+				09D422292B1279D700A81F15 /* CardCell.swift */,
+			);
+			path = AddHistory;
 		091036B22B11FFB80065A229 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,9 +324,13 @@
 				091036B82B1210740065A229 /* bodyView.swift in Sources */,
 				091036A72B11B3010065A229 /* BaseViewController.swift in Sources */,
 				091036612B1184C20065A229 /* AppDelegate.swift in Sources */,
+				09D4222A2B1279D700A81F15 /* CardCell.swift in Sources */,
+				09D422222B11EE7200A81F15 /* TextField+.swift in Sources */,
 				091036B12B11EA440065A229 /* tempEnum.swift in Sources */,
 				091036632B1184C20065A229 /* SceneDelegate.swift in Sources */,
 				091036812B11945F0065A229 /* tempService.swift in Sources */,
+				09D422242B120CB700A81F15 /* Label+.swift in Sources */,
+				09D422202B11E47A00A81F15 /* InstallmentPaymentVC.swift in Sources */,
 				091036912B11B2120065A229 /* Fonts+.swift in Sources */,
 				091036B42B11FFC40065A229 /* HomeViewController.swift in Sources */,
 			);
