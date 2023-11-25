@@ -16,11 +16,17 @@ class ViewController: BaseViewController {
         $0.layer.borderColor = UIColor(hexString: "#111111").cgColor
         $0.layer.cornerRadius = 10
         $0.layer.borderWidth = 1
+        $0.textColor = .black
     }
     private let textfield2 = UITextField().then {
         $0.layer.borderColor = UIColor(hexString: "#111111").cgColor
         $0.layer.cornerRadius = 10
         $0.layer.borderWidth = 1
+    }
+    private let img = UIImageView().then {
+        $0.contentMode = .scaleAspectFit
+        $0.backgroundColor = .clear
+        $0.image = UIImage(named: "Watcha")
     }
     
     private let label = UILabel().then {
@@ -39,7 +45,7 @@ class ViewController: BaseViewController {
     override func addview() {
         self.view.addSubview(label)
         self.view.addSubview(textfield)
-        self.view.addSubview(textfield2)
+        self.view.addSubview(img)
     }
     
     override func layout() {
@@ -49,18 +55,17 @@ class ViewController: BaseViewController {
             $0.height.equalTo(50)
             $0.width.equalTo(100)
         }
-        self.textfield2.snp.makeConstraints {
+        self.img.snp.makeConstraints {
             $0.top.equalTo(self.textfield.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(50)
-            $0.width.equalTo(100)
+            $0.width.height.equalTo(50)
         }
         self.label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.centerY.equalToSuperview()
         }
     }
-    
+
     func showTextfield2() {
         self.textfield2.alpha = 0.0
         self.textfield2.isHidden = false
@@ -69,13 +74,28 @@ class ViewController: BaseViewController {
             self.textfield2.alpha = 1.0
         })
     }
+    
 }
 
 extension ViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == textfield {
-            showTextfield2()
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        if let img = Iteam_iOS.test(rawValue: textField.text ?? "")?.image {
+            self.img.image = UIImage(named: img)
         }
-        return true
+        else {
+            self.img.image = UIImage(named: "")
+        }
+        
+        // 텍스트에 맞는 이미지 이름 가져오기
+        //        if let imageName = Iteam_iOS.test(rawValue: textField.text ?? "")?.image {
+        //            self.img.image = UIImage(named: imageName)
+        //        } else {
+        //            // 처리할 로직 추가: 예를 들어, 적절한 디폴트 이미지를 설정하거나 에러 처리 등
+        //            self.img.image = UIImage(named: "DefaultImage")
+        //        }
+        //    }
     }
+    
 }
