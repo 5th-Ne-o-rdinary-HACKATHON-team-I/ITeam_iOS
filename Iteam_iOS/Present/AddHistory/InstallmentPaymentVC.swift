@@ -35,8 +35,20 @@ class InstallmentPaymentVC: BaseViewController {
     }
     
     private let CellID = "CardCell"
-    private let cardList = ["haha", "hoho"]
-    private let tableViewContainer = UIView().then {
+    private let cardList = ["농협카드",
+                            "농협BC카드",
+                            "롯데카드",
+                            "삼성카드",
+                            "시티카드",
+                            "우리카드",
+                            "하나카드",
+                            "현대카드",
+                            "BC카드",
+                            "IBK기업은행",
+                            "JB카드",
+                            "KB국민카드",
+                            "SC은행"]
+    private let tableViewContainer1 = UIView().then {
         $0.backgroundColor = UIColor(named: "white")
         $0.isHidden = true
         $0.layer.borderWidth = 1
@@ -44,8 +56,9 @@ class InstallmentPaymentVC: BaseViewController {
         $0.layer.cornerRadius = 5
     }
     
-    private let tableView = UITableView().then {
+    private let tableView1 = UITableView().then {
         $0.isHidden = true
+        $0.separatorStyle = .none
     }
     
     private lazy var companyVStack = UIStackView(arrangedSubviews: [self.companyTitleLabel, self.companyContent]).then {
@@ -95,6 +108,21 @@ class InstallmentPaymentVC: BaseViewController {
         $0.backgroundColor = UIColor(named: "gray03")!.withAlphaComponent(0.2)
         $0.clipsToBounds = true
         $0.layer.cornerRadius = 5
+    }
+    
+    private let monthList = ["3개월", "6개월", "9개월", "12개월", "직접 입력"]
+    
+    private let tableViewContainer2 = UIView().then {
+        $0.backgroundColor = UIColor(named: "white")
+        $0.isHidden = true
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(named: "gray02")?.cgColor
+        $0.layer.cornerRadius = 5
+    }
+    
+    private let tableView2 = UITableView().then {
+        $0.isHidden = true
+        $0.separatorStyle = .none
     }
     
     private lazy var durationVStack = UIStackView(arrangedSubviews: [self.durationTitleLabel, self.durationContent]).then {
@@ -151,6 +179,21 @@ class InstallmentPaymentVC: BaseViewController {
         $0.alignment = .leading
         $0.distribution = .fillProportionally
         $0.spacing = 8
+    }
+    
+    private let dateList = ["1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일", "16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일", "막일"]
+    
+    private let tableViewContainer3 = UIView().then {
+        $0.backgroundColor = UIColor(named: "white")
+        $0.isHidden = true
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(named: "gray02")?.cgColor
+        $0.layer.cornerRadius = 5
+    }
+    
+    private let tableView3 = UITableView().then {
+        $0.isHidden = true
+        $0.separatorStyle = .none
     }
     
     // 할부 시작 날짜
@@ -242,17 +285,33 @@ class InstallmentPaymentVC: BaseViewController {
         rateTextfield.delegate = self
         objectTextfield.delegate = self
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(CardCell.self, forCellReuseIdentifier: CellID)
+        tableView1.dataSource = self
+        tableView1.delegate = self
+        tableView1.register(CardCell.self, forCellReuseIdentifier: CellID)
         
         companyContent.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(companyContentTapped))
         companyContent.addGestureRecognizer(tapGesture)
         
+        tableView2.dataSource = self
+        tableView2.delegate = self
+        tableView2.register(CardCell.self, forCellReuseIdentifier: CellID)
+        
+        durationContent.isUserInteractionEnabled = true
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(durationContentTapped))
+        durationContent.addGestureRecognizer(tapGesture2)
+        
+        tableView3.dataSource = self
+        tableView3.delegate = self
+        tableView3.register(CardCell.self, forCellReuseIdentifier: CellID)
+        
+        dateContent.isUserInteractionEnabled = true
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(dateContentTapped))
+        dateContent.addGestureRecognizer(tapGesture3)
+        
         startContent.isUserInteractionEnabled = true
-        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(startContentTapped))
-        startContent.addGestureRecognizer(tapGesture2)
+        let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(startContentTapped))
+        startContent.addGestureRecognizer(tapGesture4)
         
     }
     
@@ -272,8 +331,14 @@ class InstallmentPaymentVC: BaseViewController {
         view.addSubview(objectVStack)
         view.addSubview(completeButton)
         
-        view.addSubview(tableViewContainer)
-        tableViewContainer.addSubview(tableView)
+        view.addSubview(tableViewContainer1)
+        tableViewContainer1.addSubview(tableView1)
+        
+        view.addSubview(tableViewContainer2)
+        tableViewContainer2.addSubview(tableView2)
+        
+        view.addSubview(tableViewContainer3)
+        tableViewContainer3.addSubview(tableView3)
         
         view.addSubview(datePickerContainer)
         datePickerContainer.addSubview(datePicker)
@@ -298,15 +363,17 @@ class InstallmentPaymentVC: BaseViewController {
             mc.left.right.equalTo(self.view).offset(17)
         }
         
-        tableViewContainer.snp.makeConstraints { (mc) in
+        tableViewContainer1.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(193)
             mc.top.equalTo(self.companyVStack.snp.bottom).offset(4)
             mc.left.right.equalTo(self.view).offset(17)
         }
         
-        tableView.snp.makeConstraints { (mc) in
-            mc.edges.equalToSuperview().inset(UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12))
+        tableView1.snp.makeConstraints { (mc) in
+            mc.top.bottom.equalTo(tableViewContainer1).offset(4)
+            mc.left.right.equalTo(tableViewContainer1).offset(12)
+
         }
         
         moneyTextfield.snp.makeConstraints { (mc) in
@@ -333,6 +400,19 @@ class InstallmentPaymentVC: BaseViewController {
             mc.left.right.equalTo(self.view).offset(17)
         }
         
+        tableViewContainer2.snp.makeConstraints { (mc) in
+            mc.width.equalTo(self.view).offset(-34)
+            mc.height.equalTo(193)
+            mc.top.equalTo(self.durationVStack.snp.bottom).offset(4)
+            mc.left.right.equalTo(self.view).offset(17)
+        }
+        
+        tableView2.snp.makeConstraints { (mc) in
+            mc.top.bottom.equalTo(tableViewContainer2).offset(4)
+            mc.left.right.equalTo(tableViewContainer2).offset(12)
+
+        }
+        
         rateTextfield.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(37)
@@ -355,6 +435,19 @@ class InstallmentPaymentVC: BaseViewController {
             mc.height.equalTo(66)
             mc.top.equalTo(self.rateVStack.snp.bottom).offset(16)
             mc.left.right.equalTo(self.view).offset(17)
+        }
+        
+        tableViewContainer3.snp.makeConstraints { (mc) in
+            mc.width.equalTo(self.view).offset(-34)
+            mc.height.equalTo(193)
+            mc.top.equalTo(self.dateVStack.snp.bottom).offset(4)
+            mc.left.right.equalTo(self.view).offset(17)
+        }
+        
+        tableView3.snp.makeConstraints { (mc) in
+            mc.top.bottom.equalTo(tableViewContainer3).offset(4)
+            mc.left.right.equalTo(tableViewContainer3).offset(12)
+
         }
         
         startContent.snp.makeConstraints { (mc) in
@@ -450,25 +543,71 @@ class InstallmentPaymentVC: BaseViewController {
     }
     
     @objc func companyContentTapped() {
-        if tableViewContainer.isHidden && tableView.isHidden {
-            tableViewContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-            tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-            tableViewContainer.isHidden = !tableViewContainer.isHidden
-            tableView.isHidden = !tableView.isHidden
+        if tableViewContainer1.isHidden && tableView1.isHidden {
+            tableViewContainer1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            tableView1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            tableViewContainer1.isHidden = !tableViewContainer1.isHidden
+            tableView1.isHidden = !tableView1.isHidden
             UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlDown) {
-                self.tableViewContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
-                self.tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+                self.tableViewContainer1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+                self.tableView1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
             }
         } else {
-            self.tableViewContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
-            self.tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableViewContainer1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableView1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
             UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
-                self.tableViewContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-                self.tableView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableViewContainer1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableView1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
             }
             
-            self.tableViewContainer.isHidden = !self.tableViewContainer.isHidden
-            self.tableView.isHidden = !self.tableView.isHidden
+            self.tableViewContainer1.isHidden = !self.tableViewContainer1.isHidden
+            self.tableView1.isHidden = !self.tableView1.isHidden
+        }
+    }
+    
+    @objc func durationContentTapped() {
+        if tableViewContainer2.isHidden && tableView2.isHidden {
+            tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            tableViewContainer2.isHidden = !tableViewContainer2.isHidden
+            tableView2.isHidden = !tableView2.isHidden
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlDown) {
+                self.tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+                self.tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            }
+        } else {
+            self.tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
+                self.tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            }
+            
+            self.tableViewContainer2.isHidden = !self.tableViewContainer2.isHidden
+            self.tableView2.isHidden = !self.tableView2.isHidden
+        }
+    }
+    
+    @objc func dateContentTapped() {
+        if tableViewContainer3.isHidden && tableView3.isHidden {
+            tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            tableViewContainer3.isHidden = !tableViewContainer3.isHidden
+            tableView3.isHidden = !tableView3.isHidden
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlDown) {
+                self.tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+                self.tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            }
+        } else {
+            self.tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
+                self.tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            }
+            
+            self.tableViewContainer3.isHidden = !self.tableViewContainer3.isHidden
+            self.tableView3.isHidden = !self.tableView3.isHidden
         }
     }
     
@@ -577,11 +716,26 @@ extension InstallmentPaymentVC: UITextFieldDelegate {
 
 extension InstallmentPaymentVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cardList.count
+        if tableView == tableView1 {
+            return cardList.count
+        } else if tableView == tableView2 {
+            return monthList.count
+        } else if tableView == tableView3 {
+            return dateList.count
+        }
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellID, for: indexPath) as! CardCell
+        
+        if tableView == tableView1 {
+            cell.label.text = cardList[indexPath.row]
+        } else if tableView == tableView2 {
+            cell.label.text = monthList[indexPath.row]
+        } else if tableView == tableView3 {
+            cell.label.text = dateList[indexPath.row]
+        }
         
         return cell
     }
@@ -590,10 +744,80 @@ extension InstallmentPaymentVC: UITableViewDataSource {
 extension InstallmentPaymentVC: UITableViewDelegate {
     // MARK: - Setting Size of Cells
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 29
+        return 33
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if tableView == tableView1 {
+            let selectedText = cardList[indexPath.row]
+            
+            companyContent.then {
+                $0.font = .body1
+                $0.text = selectedText
+                $0.textColor = UIColor(named: "black")
+                $0.backgroundColor = UIColor(named: "white")
+                $0.layer.borderColor = UIColor(named: "gray03")?.cgColor
+                $0.layer.cornerRadius = 5
+                $0.layer.borderWidth = 1
+            }
+            
+            self.tableViewContainer1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableView1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
+                self.tableViewContainer1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableView1.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            }
+            
+            self.tableViewContainer1.isHidden = !self.tableViewContainer1.isHidden
+            self.tableView1.isHidden = !self.tableView1.isHidden
+        } else if tableView == tableView2 {
+            let selectedText = monthList[indexPath.row]
+            
+            durationContent.then {
+                $0.font = .body1
+                $0.text = selectedText
+                $0.textColor = UIColor(named: "black")
+                $0.backgroundColor = UIColor(named: "white")
+                $0.layer.borderColor = UIColor(named: "gray03")?.cgColor
+                $0.layer.cornerRadius = 5
+                $0.layer.borderWidth = 1
+            }
+            
+            self.tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
+                self.tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            }
+            
+            self.tableViewContainer2.isHidden = !self.tableViewContainer2.isHidden
+            self.tableView2.isHidden = !self.tableView2.isHidden
+        } else if tableView == tableView3 {
+            let selectedText = dateList[indexPath.row]
+            
+            dateContent.then {
+                $0.font = .body1
+                $0.text = "매월 " + selectedText
+                $0.textColor = UIColor(named: "black")
+                $0.backgroundColor = UIColor(named: "white")
+                $0.layer.borderColor = UIColor(named: "gray03")?.cgColor
+                $0.layer.cornerRadius = 5
+                $0.layer.borderWidth = 1
+            }
+            
+            self.tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            self.tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 193)
+            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
+                self.tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+                self.tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
+            }
+            
+            self.tableViewContainer3.isHidden = !self.tableViewContainer3.isHidden
+            self.tableView3.isHidden = !self.tableView3.isHidden
+        }
+        
+        
     }
 }

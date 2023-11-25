@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardCell: UITableViewCell {
+class MonthCell: UITableViewCell {
 
     // UI 요소들을 정의합니다.
     var label: UILabel = {

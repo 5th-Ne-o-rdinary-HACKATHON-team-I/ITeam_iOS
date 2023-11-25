@@ -32,6 +32,7 @@
 		091036A32B11B2600065A229 /* SUIT-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0910369A2B11B2600065A229 /* SUIT-SemiBold.ttf */; };
 		091036A42B11B2600065A229 /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0910369B2B11B2600065A229 /* SUIT-Regular.ttf */; };
 		091036A72B11B3010065A229 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036A62B11B3010065A229 /* BaseViewController.swift */; };
+		0943FE6D2B1295BC0075846A /* MonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943FE6C2B1295BC0075846A /* MonthCell.swift */; };
 		09D4221D2B11D16200A81F15 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09D4221C2B11D16200A81F15 /* IQKeyboardManagerSwift */; };
 		09D422202B11E47A00A81F15 /* InstallmentPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */; };
 		09D422222B11EE7200A81F15 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D422212B11EE7200A81F15 /* TextField+.swift */; };
@@ -63,6 +64,7 @@
 		0910369A2B11B2600065A229 /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 		0910369B2B11B2600065A229 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		091036A62B11B3010065A229 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		0943FE6C2B1295BC0075846A /* MonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCell.swift; sourceTree = "<group>"; };
 		09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallmentPaymentVC.swift; sourceTree = "<group>"; };
 		09D422212B11EE7200A81F15 /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
 		09D422232B120CB700A81F15 /* Label+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+.swift"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */,
 				09D422292B1279D700A81F15 /* CardCell.swift */,
+				0943FE6C2B1295BC0075846A /* MonthCell.swift */,
 			);
 			path = AddHistory;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0943FE6D2B1295BC0075846A /* MonthCell.swift in Sources */,
 				0910368B2B11B1130065A229 /* Color+.swift in Sources */,
 				091036832B1194650065A229 /* tempModel.swift in Sources */,
 				0910368F2B11B1890065A229 /* String+.swift in Sources */,
