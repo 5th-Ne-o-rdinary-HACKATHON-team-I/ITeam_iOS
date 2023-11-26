@@ -23,7 +23,7 @@ extension String{
         numberFormatter.maximumFractionDigits = 2
         
         var formattedPrice = numberFormatter.string(from: NSNumber(value: number)) ?? self
-        formattedPrice += "원"
+        formattedPrice += " 원"
         
         return formattedPrice
     }

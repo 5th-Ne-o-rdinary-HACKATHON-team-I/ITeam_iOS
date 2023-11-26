@@ -22,6 +22,12 @@ class CalculatorViewController: BaseViewController {
     static let gray2 = UIColor(hexString: "D9D9D9")
     static let gray3 = UIColor(hexString: "BFBEBE")
     
+    var totalAmount: Int = 0
+    var monthCount: Int = 0
+    var noIncMonthCount: Int = 0
+    var increateRate: Int = 0
+
+    
     
     private var tableView: UITableView!
     var whichTextField: WhichTextField = .installmentMonth
@@ -283,6 +289,8 @@ class CalculatorViewController: BaseViewController {
             self.calculateButton.alpha = 1.0
         })
     }
+    
+ 
 
     
     override func viewDidLoad() {
@@ -308,7 +316,8 @@ class CalculatorViewController: BaseViewController {
         let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(labelTapped2(_:)))
         interestFreeMonthInputLabel.addGestureRecognizer(tapGesture2)
         
-
+        calculateButton.addTarget(self, action: #selector(moveToResultView), for: .touchUpInside)
+        
     }
     
     @objc func labelTapped1(_ sender: UITapGestureRecognizer){
@@ -321,6 +330,36 @@ class CalculatorViewController: BaseViewController {
         
         self.moveLabelDown_interestFreeMonth()
         self.fadeIn_interestFreeMonth(duration: 0.5)
+    }
+    
+    @objc func moveToResultView(){
+        
+        let viewController = CalculateResultViewController()
+        
+        var calBodyModel = CalculatorBodyModel(totalAmount: totalAmount, monthCount: monthCount, noIncMonthCount: noIncMonthCount, increateRate: increateRate)
+        
+        CalculatorManager.shared.getCalculateResult(calcBodyModel: calBodyModel, completion: { result in
+            switch result {
+            case .success(let data):
+                print(data)
+                viewController.wonLabel.text = "\(data.result.avgPerMonthTotalPay)"
+                viewController.resultDetailLabel_1.text = "\(data.result.avgPerMonthTotalPay)"
+                viewController.explainDetailLabel_2.text = "\(data.result.avgPerMonthInc)"
+                viewController.explainDetailLabel_3.text = "\(data.result.totalInc)"
+                
+                
+                viewController.resultFinalLabel_1.text = self.installmentAmountTextField.text
+                viewController.resultFinalLabel_2.text = self.installmentMonthTextField.text
+                viewController.resultFinalLabel_3.text = self.interestFreeMonthTextField.text
+                viewController.resultFinalLabel_4.text = self.interestRateTextField.text
+            case . failure(let error):
+                print(error)
+                return
+            }
+            
+        })
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     override func addview() {
@@ -449,10 +488,14 @@ extension CalculatorViewController: UITextFieldDelegate{
         }
         
         else if textField == installmentAmountTextField {
-            
+            self.totalAmount = Int(textField.text!)!
+            installmentAmountTextField.text = textField.text!.formatPriceWithWon()
         }
         
+        
+        
         else if textField == installmentMonthLabel {
+            self.monthCount = Int(textField.text!)!
             installmentMonthInputLabel.text = "   " + textField.text! + " 개월"
             installmentMonthInputLabel.isHidden = false
             textField.isHidden = true
@@ -461,11 +504,18 @@ extension CalculatorViewController: UITextFieldDelegate{
         }
         
         else if textField == interestFreeMonthTextField {
+            self.noIncMonthCount = Int(textField.text!)!
             interestFreeMonthInputLabel.text = "   " + textField.text! + " 개월"
             interestFreeMonthInputLabel.isHidden = false
             textField.isHidden = true
             moveLabelUp_interestFreeMonth()
             tableView.alpha = 0.0
+        }
+        
+        else if textField == interestRateTextField{
+            self.increateRate = Int(textField.text!)!
+            
+            interestRateTextField.text = textField.text! + "%"
         }
         
         if interestRateTextField.text != "" {
@@ -563,30 +613,13 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-
-
-#if DEBUG
+#if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct Preview: UIViewControllerRepresentable {
-    
-    // 여기 ViewController를 변경해주세요
-    func makeUIViewController(context: Context) -> UIViewController {
-        CalculatorViewController()
-    }
-    
-    func updateUIViewController(_ uiView: UIViewController,context: Context) {
-        // leave this empty
-    }
-}
 
-struct ViewController_PreviewProvider: PreviewProvider {
+struct VCPreview: PreviewProvider {
     static var previews: some View {
-        Group {
-            Preview()
-                .edgesIgnoringSafeArea(.all)
-                .previewDisplayName("Preview")
-                .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
-        }
+        CalculatorViewController().showPreView(.iPhone12Pro)
     }
 }
 #endif
+
