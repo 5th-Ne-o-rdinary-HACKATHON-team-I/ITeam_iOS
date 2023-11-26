@@ -33,6 +33,10 @@
 		091036A42B11B2600065A229 /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0910369B2B11B2600065A229 /* SUIT-Regular.ttf */; };
 		091036A72B11B3010065A229 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091036A62B11B3010065A229 /* BaseViewController.swift */; };
 		0943FE6D2B1295BC0075846A /* MonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0943FE6C2B1295BC0075846A /* MonthCell.swift */; };
+		097799362B12AE4500936530 /* addModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097799352B12AE4500936530 /* addModels.swift */; };
+		097799382B12AEB200936530 /* addAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097799372B12AEB200936530 /* addAPI.swift */; };
+		0977993A2B12B0D800936530 /* addManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097799392B12B0D800936530 /* addManager.swift */; };
+		0977993C2B12B8CE00936530 /* SubscribeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0977993B2B12B8CE00936530 /* SubscribeVC.swift */; };
 		09D4221D2B11D16200A81F15 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 09D4221C2B11D16200A81F15 /* IQKeyboardManagerSwift */; };
 		09D422202B11E47A00A81F15 /* InstallmentPaymentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */; };
 		09D422222B11EE7200A81F15 /* TextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D422212B11EE7200A81F15 /* TextField+.swift */; };
@@ -65,6 +69,10 @@
 		0910369B2B11B2600065A229 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		091036A62B11B3010065A229 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0943FE6C2B1295BC0075846A /* MonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCell.swift; sourceTree = "<group>"; };
+		097799352B12AE4500936530 /* addModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addModels.swift; sourceTree = "<group>"; };
+		097799372B12AEB200936530 /* addAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addAPI.swift; sourceTree = "<group>"; };
+		097799392B12B0D800936530 /* addManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addManager.swift; sourceTree = "<group>"; };
+		0977993B2B12B8CE00936530 /* SubscribeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeVC.swift; sourceTree = "<group>"; };
 		09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallmentPaymentVC.swift; sourceTree = "<group>"; };
 		09D422212B11EE7200A81F15 /* TextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+.swift"; sourceTree = "<group>"; };
 		09D422232B120CB700A81F15 /* Label+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+.swift"; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				091036822B1194650065A229 /* tempModel.swift */,
+				097799352B12AE4500936530 /* addModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -132,6 +141,8 @@
 			children = (
 				091036802B11945F0065A229 /* tempService.swift */,
 				091036872B11ABA70065A229 /* APIConstant.swift */,
+				097799372B12AEB200936530 /* addAPI.swift */,
+				097799392B12B0D800936530 /* addManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 				09D4221F2B11E47A00A81F15 /* InstallmentPaymentVC.swift */,
 				09D422292B1279D700A81F15 /* CardCell.swift */,
 				0943FE6C2B1295BC0075846A /* MonthCell.swift */,
+				0977993B2B12B8CE00936530 /* SubscribeVC.swift */,
 			);
 			path = AddHistory;
 			sourceTree = "<group>";
@@ -295,15 +307,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0943FE6D2B1295BC0075846A /* MonthCell.swift in Sources */,
+				097799382B12AEB200936530 /* addAPI.swift in Sources */,
 				0910368B2B11B1130065A229 /* Color+.swift in Sources */,
 				091036832B1194650065A229 /* tempModel.swift in Sources */,
 				0910368F2B11B1890065A229 /* String+.swift in Sources */,
+				0977993C2B12B8CE00936530 /* SubscribeVC.swift in Sources */,
 				091036652B1184C20065A229 /* ViewController.swift in Sources */,
 				091036882B11ABA70065A229 /* APIConstant.swift in Sources */,
 				091036A72B11B3010065A229 /* BaseViewController.swift in Sources */,
+				097799362B12AE4500936530 /* addModels.swift in Sources */,
 				091036612B1184C20065A229 /* AppDelegate.swift in Sources */,
 				09D4222A2B1279D700A81F15 /* CardCell.swift in Sources */,
 				09D422222B11EE7200A81F15 /* TextField+.swift in Sources */,
+				0977993A2B12B0D800936530 /* addManager.swift in Sources */,
 				091036632B1184C20065A229 /* SceneDelegate.swift in Sources */,
 				091036812B11945F0065A229 /* tempService.swift in Sources */,
 				09D422242B120CB700A81F15 /* Label+.swift in Sources */,

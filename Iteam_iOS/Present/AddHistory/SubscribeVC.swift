@@ -1,19 +1,18 @@
 //
-//  InstallmentPaymentVC.swift
+//  SubscribeVC.swift
 //  Iteam_iOS
 //
-//  Created by 장윤정 on 2023/11/25.
+//  Created by 장윤정 on 2023/11/26.
 //
 
 import UIKit
-import SnapKit
 
-class InstallmentPaymentVC: BaseViewController {
+class SubscribeVC: BaseViewController {
     //MARK: - Properties
     // 변수 및 상수, IBOutlet
     
     private let titleLabel = UILabel().then {
-        $0.text = "할부 결제 내역 등록"
+        $0.text = "구독 결제 내역 등록"
         $0.font = .body1
         $0.textColor = UIColor(named: "main00")
     }
@@ -69,9 +68,9 @@ class InstallmentPaymentVC: BaseViewController {
         $0.spacing = 8
     }
     
-    // 할부 금액
+    // 구독 금액
     private let moneyTitleLabel = UILabel().then {
-        $0.text = "할부 금액"
+        $0.text = "구독 금액"
         $0.font = .body1
         $0.textColor = UIColor(named: "black")
     }
@@ -86,70 +85,6 @@ class InstallmentPaymentVC: BaseViewController {
     }
     
     private lazy var moneyVStack = UIStackView(arrangedSubviews: [self.moneyTitleLabel, self.moneyTextfield]).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.distribution = .fillProportionally
-        $0.spacing = 8
-    }
-    
-    
-    // 할부 개월
-    private let durationTitleLabel = UILabel().then {
-        $0.text = "할부 개월"
-        $0.font = .body1
-        $0.textColor = UIColor(named: "black")
-    }
-    
-    private let durationContent = PaddingLabel().then {
-        $0.text = "할부 개월 선택"
-        $0.font = .body1
-        $0.textColor = UIColor(named: "gray03")
-        $0.backgroundColor = UIColor(named: "gray03")!.withAlphaComponent(0.2)
-        $0.clipsToBounds = true
-        $0.layer.cornerRadius = 5
-    }
-    
-    private let monthList = ["3개월", "6개월", "9개월", "12개월", "직접 입력"]
-    
-    private let tableViewContainer2 = UIView().then {
-        $0.backgroundColor = UIColor(named: "white")
-        $0.isHidden = true
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor(named: "gray02")?.cgColor
-        $0.layer.cornerRadius = 5
-    }
-    
-    private let tableView2 = UITableView().then {
-        $0.isHidden = true
-        $0.separatorStyle = .none
-    }
-    
-    private lazy var durationVStack = UIStackView(arrangedSubviews: [self.durationTitleLabel, self.durationContent]).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.distribution = .fillProportionally
-        $0.spacing = 8
-    }
-    
-    // 이자율
-    private let rateTitleLabel = UILabel().then {
-        $0.text = "이자율"
-        $0.font = .body1
-        $0.textColor = UIColor(named: "black")
-    }
-    
-    private let rateTextfield = UITextField().then {
-        $0.font = .body1
-        $0.layer.cornerRadius = 5
-        $0.backgroundColor = UIColor(named: "gray03")!.withAlphaComponent(0.2)
-        $0.attributedPlaceholder = NSAttributedString(string: "이자율 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor(named: "gray03")!,
-                                                                                  NSAttributedString.Key.font : UIFont.body1!])
-        $0.addLeftPadding(padding: 12)
-    }
-    
-    private lazy var rateVStack = UIStackView(arrangedSubviews: [self.rateTitleLabel, self.rateTextfield]).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .leading
@@ -183,6 +118,36 @@ class InstallmentPaymentVC: BaseViewController {
     
     private let dateList = ["1일", "2일", "3일", "4일", "5일", "6일", "7일", "8일", "9일", "10일", "11일", "12일", "13일", "14일", "15일", "16일", "17일", "18일", "19일", "20일", "21일", "22일", "23일", "24일", "25일", "26일", "27일", "28일", "막일"]
     
+    private let tableViewContainer2 = UIView().then {
+        $0.backgroundColor = UIColor(named: "white")
+        $0.isHidden = true
+        $0.layer.borderWidth = 1
+        $0.layer.borderColor = UIColor(named: "gray02")?.cgColor
+        $0.layer.cornerRadius = 5
+    }
+    
+    private let tableView2 = UITableView().then {
+        $0.isHidden = true
+        $0.separatorStyle = .none
+    }
+    
+    // 구매 상품
+    private let objectTitleLabel = UILabel().then {
+        $0.text = "구매 상품"
+        $0.font = .body1
+        $0.textColor = UIColor(named: "black")
+    }
+    
+    private let objectContent = PaddingLabel().then {
+        $0.text = "카드사 선택"
+        $0.font = .body1
+        $0.textColor = UIColor(named: "gray03")
+        $0.backgroundColor = UIColor(named: "gray03")!.withAlphaComponent(0.2)
+        $0.clipsToBounds = true
+        $0.layer.cornerRadius = 5
+    }
+
+    private let subscribeList = ["Netflix", "YouTube Premium", "KakaoTalk", "naver", "DisneyPlus"]
     private let tableViewContainer3 = UIView().then {
         $0.backgroundColor = UIColor(named: "white")
         $0.isHidden = true
@@ -196,65 +161,7 @@ class InstallmentPaymentVC: BaseViewController {
         $0.separatorStyle = .none
     }
     
-    // 할부 시작 날짜
-    private let startTitleLabel = UILabel().then {
-        $0.text = "할부 시작 날짜"
-        $0.font = .body1
-        $0.textColor = UIColor(named: "black")
-    }
-    
-    private let startContent = PaddingLabel().then {
-        $0.text = "할부 시작 날짜 선택"
-        $0.font = .body1
-        $0.textColor = UIColor(named: "gray03")
-        $0.backgroundColor = UIColor(named: "gray03")!.withAlphaComponent(0.2)
-        $0.clipsToBounds = true
-        $0.layer.cornerRadius = 5
-    }
-    
-    private lazy var startVStack = UIStackView(arrangedSubviews: [self.startTitleLabel, self.startContent]).then {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.axis = .vertical
-        $0.alignment = .leading
-        $0.distribution = .fillProportionally
-        $0.spacing = 8
-    }
-    
-    // 할부 날짜 선택 DatePicker
-    private let datePickerContainer = UIView().then {
-        $0.backgroundColor = UIColor(named: "white")
-        $0.isHidden = true
-        $0.layer.borderWidth = 1
-        $0.layer.borderColor = UIColor(named: "gray02")?.cgColor
-        $0.layer.cornerRadius = 5
-    }
-    
-    private lazy var datePicker = UIDatePicker().then {
-        var tag = 0
-        $0.isHidden = true
-        $0.preferredDatePickerStyle = .wheels
-        $0.datePickerMode = .date
-        $0.locale = Locale(identifier: "ko-KR")
-        $0.addTarget(self, action: #selector(completeSelectDate(_:)), for: .valueChanged)
-    }
-    
-    // 구매 상품
-    private let objectTitleLabel = UILabel().then {
-        $0.text = "구매 상품"
-        $0.font = .body1
-        $0.textColor = UIColor(named: "black")
-    }
-    
-    private let objectTextfield = UITextField().then {
-        $0.font = .body1
-        $0.layer.cornerRadius = 5
-        $0.backgroundColor = UIColor(named: "gray03")!.withAlphaComponent(0.2)
-        $0.attributedPlaceholder = NSAttributedString(string: "구매 상품 입력", attributes: [NSAttributedString.Key.foregroundColor : UIColor(named: "gray03")!,
-                                                                                  NSAttributedString.Key.font : UIFont.body1!])
-        $0.addLeftPadding(padding: 12)
-    }
-    
-    private lazy var objectVStack = UIStackView(arrangedSubviews: [self.objectTitleLabel, self.objectTextfield]).then {
+    private lazy var objectVStack = UIStackView(arrangedSubviews: [self.objectTitleLabel, self.objectContent]).then {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .vertical
         $0.alignment = .leading
@@ -274,19 +181,16 @@ class InstallmentPaymentVC: BaseViewController {
         
         let Action = UIAction { _ in
             print("할부 결제 내역 등록하기 버튼 클릭")
-            if self.companyContent.text != "" && self.moneyTextfield.text != "" && self.durationContent.text != "" && self.rateTextfield.text != "" && self.dateContent.text != "" && self.startContent.text != "" && self.objectTextfield.text != "" {
+            if self.companyContent.text != "" && self.moneyTextfield.text != "" && self.dateContent.text != "" && self.objectContent.text != "" {
                 print("가능")
-                
-                let addData: Installment = Installment(memberID: 9,
-                                                       cardCompany: UserDefaults.standard.string(forKey: "cardCompany")!,
-                                                       memo: UserDefaults.standard.string(forKey: "memo")!,
-                                                       interestRate: Double(UserDefaults.standard.string(forKey: "interestRate")!)!,
-                                                       startDate: UserDefaults.standard.string(forKey: "startDate")!,
-                                                       monthCount: UserDefaults.standard.integer(forKey: "monthCount"),
-                                                       billingDay: UserDefaults.standard.integer(forKey: "billingDay"),
-                                                       totalAmount: UserDefaults.standard.integer(forKey: "totalAmount"))
+
+                let addData: Subscribe = Subscribe(memberID: 9,
+                                                   cardCategory: UserDefaults.standard.string(forKey: "cardCategory")!,
+                                                   monthlyFee: UserDefaults.standard.integer(forKey: "monthlyFee"),
+                                                   billingDay: UserDefaults.standard.integer(forKey: "billingDay"),
+                                                   serviceName: UserDefaults.standard.string(forKey: "serviceName")!)
                 print(addData)
-                addManager.shared.addList(installmentData: addData) { result in
+                addManager.shared.addSubscribeList(subscribeData: addData){ result in
                     switch result {
                     case .success(let data):
                         print(data)
@@ -301,12 +205,12 @@ class InstallmentPaymentVC: BaseViewController {
                     }
                 }
 
-                
+
             } else {
                 print("불가능")
             }
         }
-            
+
         button.addAction(Action, for: .touchUpInside)
         
         return button
@@ -317,8 +221,6 @@ class InstallmentPaymentVC: BaseViewController {
 
     override func configure() {
         moneyTextfield.delegate = self
-        rateTextfield.delegate = self
-        objectTextfield.delegate = self
         
         tableView1.dataSource = self
         tableView1.delegate = self
@@ -332,21 +234,17 @@ class InstallmentPaymentVC: BaseViewController {
         tableView2.delegate = self
         tableView2.register(CardCell.self, forCellReuseIdentifier: CellID)
         
-        durationContent.isUserInteractionEnabled = true
-        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(durationContentTapped))
-        durationContent.addGestureRecognizer(tapGesture2)
+        dateContent.isUserInteractionEnabled = true
+        let tapGesture2 = UITapGestureRecognizer(target: self, action: #selector(dateContentTapped))
+        dateContent.addGestureRecognizer(tapGesture2)
         
         tableView3.dataSource = self
         tableView3.delegate = self
         tableView3.register(CardCell.self, forCellReuseIdentifier: CellID)
         
-        dateContent.isUserInteractionEnabled = true
-        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(dateContentTapped))
-        dateContent.addGestureRecognizer(tapGesture3)
-        
-        startContent.isUserInteractionEnabled = true
-        let tapGesture4 = UITapGestureRecognizer(target: self, action: #selector(startContentTapped))
-        startContent.addGestureRecognizer(tapGesture4)
+        objectContent.isUserInteractionEnabled = true
+        let tapGesture3 = UITapGestureRecognizer(target: self, action: #selector(objectContentTapped))
+        objectContent.addGestureRecognizer(tapGesture3)
         
     }
     
@@ -356,13 +254,8 @@ class InstallmentPaymentVC: BaseViewController {
         view.addSubview(titleLabel)
         view.addSubview(companyVStack)
         view.addSubview(moneyVStack)
-        view.addSubview(durationVStack)
-        view.addSubview(rateVStack)
-        
 
-        
         view.addSubview(dateVStack)
-        view.addSubview(startVStack)
         view.addSubview(objectVStack)
         view.addSubview(completeButton)
         
@@ -374,9 +267,6 @@ class InstallmentPaymentVC: BaseViewController {
         
         view.addSubview(tableViewContainer3)
         tableViewContainer3.addSubview(tableView3)
-        
-        view.addSubview(datePickerContainer)
-        datePickerContainer.addSubview(datePicker)
     }
     
     override func layout() {
@@ -423,12 +313,12 @@ class InstallmentPaymentVC: BaseViewController {
             mc.left.right.equalTo(self.view).offset(17)
         }
         
-        durationContent.snp.makeConstraints { (mc) in
+        dateContent.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(37)
         }
         
-        durationVStack.snp.makeConstraints { (mc) in
+        dateVStack.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(66)
             mc.top.equalTo(self.moneyVStack.snp.bottom).offset(16)
@@ -438,7 +328,7 @@ class InstallmentPaymentVC: BaseViewController {
         tableViewContainer2.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(193)
-            mc.top.equalTo(self.durationVStack.snp.bottom).offset(4)
+            mc.top.equalTo(self.dateVStack.snp.bottom).offset(4)
             mc.left.right.equalTo(self.view).offset(17)
         }
         
@@ -447,35 +337,23 @@ class InstallmentPaymentVC: BaseViewController {
             mc.left.right.equalTo(tableViewContainer2).offset(12)
 
         }
-        
-        rateTextfield.snp.makeConstraints { (mc) in
+
+        objectContent.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(37)
         }
-        
-        rateVStack.snp.makeConstraints { (mc) in
+
+        objectVStack.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(66)
-            mc.top.equalTo(self.durationVStack.snp.bottom).offset(16)
-            mc.left.right.equalTo(self.view).offset(17)
-        }
-        
-        dateContent.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(37)
-        }
-        
-        dateVStack.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(66)
-            mc.top.equalTo(self.rateVStack.snp.bottom).offset(16)
+            mc.top.equalTo(self.dateVStack.snp.bottom).offset(16)
             mc.left.right.equalTo(self.view).offset(17)
         }
         
         tableViewContainer3.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-34)
             mc.height.equalTo(193)
-            mc.top.equalTo(self.dateVStack.snp.bottom).offset(4)
+            mc.top.equalTo(self.objectVStack.snp.bottom).offset(4)
             mc.left.right.equalTo(self.view).offset(17)
         }
         
@@ -484,101 +362,12 @@ class InstallmentPaymentVC: BaseViewController {
             mc.left.right.equalTo(tableViewContainer3).offset(12)
 
         }
-        
-        startContent.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(37)
-        }
-        
-        startVStack.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(66)
-            mc.top.equalTo(self.dateVStack.snp.bottom).offset(16)
-            mc.left.right.equalTo(self.view).offset(17)
-        }
-        
-        datePickerContainer.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(178)
-            mc.top.equalTo(self.startVStack.snp.bottom).offset(4)
-            mc.left.right.equalTo(self.view).offset(17)
-        }
-        
-        datePicker.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(178)
-            mc.top.left.bottom.right.equalTo(datePickerContainer)
-        }
-
-        objectTextfield.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(37)
-        }
-
-        objectVStack.snp.makeConstraints { (mc) in
-            mc.width.equalTo(self.view).offset(-34)
-            mc.height.equalTo(66)
-            mc.top.equalTo(self.startVStack.snp.bottom).offset(16)
-            mc.left.right.equalTo(self.view).offset(17)
-        }
 
         completeButton.snp.makeConstraints { (mc) in
             mc.width.equalTo(self.view).offset(-74)
             mc.height.equalTo(37)
             mc.top.equalTo(self.objectVStack.snp.bottom).offset(32)
             mc.left.right.equalTo(self.view).offset(37)
-        }
-        
-    }
-    
-    // method - 할부 시작 날짜 선택 완료 후 실행 함수
-    @objc func completeSelectDate(_ sender: UIDatePicker) {
-        if datePicker.tag == 0 {
-            startContent.then {
-                $0.font = .body1
-                $0.textColor = UIColor(named: "black")
-                $0.backgroundColor = UIColor(named: "white")
-                $0.layer.borderColor = UIColor(named: "gray03")?.cgColor
-                $0.layer.cornerRadius = 5
-                $0.layer.borderWidth = 1
-            }
-            datePicker.tag = 1
-            
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy - MM - dd" // 날짜 형식을 원하는 대로 설정
-        
-        print("선택한 날짜 : \(dateFormatter.string(from: sender.date))")
-        startContent.text = dateFormatter.string(from: sender.date)
-        
-        let dateFormatter2 = DateFormatter()
-        dateFormatter2.dateFormat = "yyyy-MM-dd" // 날짜 형식을 원하는 대로 설정
-        UserDefaults.standard.set(dateFormatter2.string(from: sender.date), forKey: "startDate")
-        print(UserDefaults.standard.string(forKey: "startDate")!)
-    }
-    
-    // method - 할부 시작 내용 라벨 탭 실행 함수
-    @objc func startContentTapped() {
-        if datePickerContainer.isHidden && datePicker.isHidden {
-            datePickerContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-            datePicker.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-            datePickerContainer.isHidden = !datePickerContainer.isHidden
-            datePicker.isHidden = !datePicker.isHidden
-            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlDown) {
-                self.datePickerContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 178)
-                self.datePicker.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 178)
-            }
-        } else {
-            self.datePickerContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 178)
-            self.datePicker.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 178)
-            UIView.animate(withDuration: 0.3, delay: 0.01, options: .transitionCurlUp) {
-                self.datePickerContainer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-                self.datePicker.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
-            }
-            
-            self.datePickerContainer.isHidden = !self.datePickerContainer.isHidden
-            self.datePicker.isHidden = !self.datePicker.isHidden
         }
         
     }
@@ -606,7 +395,7 @@ class InstallmentPaymentVC: BaseViewController {
         }
     }
     
-    @objc func durationContentTapped() {
+    @objc func dateContentTapped() {
         if tableViewContainer2.isHidden && tableView2.isHidden {
             tableViewContainer2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
             tableView2.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
@@ -629,7 +418,7 @@ class InstallmentPaymentVC: BaseViewController {
         }
     }
     
-    @objc func dateContentTapped() {
+    @objc func objectContentTapped() {
         if tableViewContainer3.isHidden && tableView3.isHidden {
             tableViewContainer3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
             tableView3.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width-34, height: 0)
@@ -664,24 +453,13 @@ class InstallmentPaymentVC: BaseViewController {
 }
 
 // TextField Delegate
-extension InstallmentPaymentVC: UITextFieldDelegate {
+extension SubscribeVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // 입력 가능한 문자 제한
         if textField == moneyTextfield {
             let charSet: CharacterSet = {
                 let cs = CharacterSet.decimalDigits
-                return cs.inverted
-            }()
-            
-            guard string.rangeOfCharacter(from: charSet) == nil else {
-                return false
-            }
-            
-        } else if textField == rateTextfield {
-            let charSet: CharacterSet = {
-                var cs = CharacterSet.decimalDigits
-                cs.insert(charactersIn: ".")
                 return cs.inverted
             }()
             
@@ -726,12 +504,7 @@ extension InstallmentPaymentVC: UITextFieldDelegate {
         if textField == moneyTextfield {
             guard let text = textField.text else { return true }
             if text != "" {
-                textField.text = UserDefaults.standard.string(forKey: "totalAmount")!
-            }
-        } else if textField == rateTextfield {
-            guard let text = textField.text else { return true }
-            if text != "" {
-                textField.text = UserDefaults.standard.string(forKey: "interestRate")!
+                textField.text = UserDefaults.standard.string(forKey: "monthlyFee")!
             }
         }
         
@@ -741,29 +514,20 @@ extension InstallmentPaymentVC: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if textField == moneyTextfield {
             guard let text = textField.text else { return }
-            UserDefaults.standard.set(text, forKey: "totalAmount")
+            UserDefaults.standard.set(text, forKey: "monthlyFee")
             textField.text = text.formatPriceWithWon()
-        } else if textField == rateTextfield {
-            guard let text = textField.text else { return }
-            UserDefaults.standard.set(text, forKey: "interestRate")
-            if text != "" {
-                textField.text = text + "%"
-            }
-        } else if textField == objectTextfield {
-            guard let text  = textField.text else { return }
-            UserDefaults.standard.set(text, forKey: "memo")
         }
     }
 }
 
-extension InstallmentPaymentVC: UITableViewDataSource {
+extension SubscribeVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
             return cardList.count
         } else if tableView == tableView2 {
-            return monthList.count
-        } else if tableView == tableView3 {
             return dateList.count
+        } else if tableView == tableView3 {
+            return subscribeList.count
         }
         return 2
     }
@@ -774,16 +538,16 @@ extension InstallmentPaymentVC: UITableViewDataSource {
         if tableView == tableView1 {
             cell.label.text = cardList[indexPath.row]
         } else if tableView == tableView2 {
-            cell.label.text = monthList[indexPath.row]
-        } else if tableView == tableView3 {
             cell.label.text = dateList[indexPath.row]
+        } else if tableView == tableView3 {
+            cell.label.text = subscribeList[indexPath.row]
         }
         
         return cell
     }
 }
 
-extension InstallmentPaymentVC: UITableViewDelegate {
+extension SubscribeVC: UITableViewDelegate {
     // MARK: - Setting Size of Cells
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 33
@@ -795,7 +559,7 @@ extension InstallmentPaymentVC: UITableViewDelegate {
         if tableView == tableView1 {
             let selectedText = cardList[indexPath.row]
             
-            UserDefaults.standard.set(selectedText, forKey: "cardCompany")
+            UserDefaults.standard.set(selectedText, forKey: "cardCategory")
             
             companyContent.then {
                 $0.font = .body1
@@ -817,11 +581,11 @@ extension InstallmentPaymentVC: UITableViewDelegate {
             self.tableViewContainer1.isHidden = !self.tableViewContainer1.isHidden
             self.tableView1.isHidden = !self.tableView1.isHidden
         } else if tableView == tableView2 {
-            let selectedText = monthList[indexPath.row]
+            let selectedText = dateList[indexPath.row]
             
-            UserDefaults.standard.set(3*(indexPath.row+1), forKey: "monthCount")
+            UserDefaults.standard.set(indexPath.row+1, forKey: "billingDay")
             
-            durationContent.then {
+            dateContent.then {
                 $0.font = .body1
                 $0.text = selectedText
                 $0.textColor = UIColor(named: "black")
@@ -841,11 +605,11 @@ extension InstallmentPaymentVC: UITableViewDelegate {
             self.tableViewContainer2.isHidden = !self.tableViewContainer2.isHidden
             self.tableView2.isHidden = !self.tableView2.isHidden
         } else if tableView == tableView3 {
-            let selectedText = dateList[indexPath.row]
+            let selectedText = subscribeList[indexPath.row]
             
-            UserDefaults.standard.set(indexPath.row+1, forKey: "billingDay")
+            UserDefaults.standard.set(selectedText, forKey: "serviceName")
             
-            dateContent.then {
+            objectContent.then {
                 $0.font = .body1
                 $0.text = "매월 " + selectedText
                 $0.textColor = UIColor(named: "black")
