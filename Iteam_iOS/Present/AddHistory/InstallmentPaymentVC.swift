@@ -281,7 +281,7 @@ class InstallmentPaymentVC: BaseViewController {
                                                        cardCompany: UserDefaults.standard.string(forKey: "cardCompany")!,
                                                        memo: UserDefaults.standard.string(forKey: "memo")!,
                                                        interestRate: Double(UserDefaults.standard.string(forKey: "interestRate")!)!,
-                                                       startDate: UserDefaults.standard.string(forKey: "startDate")!,
+                                                       startDate: UserDefaults.standard.string(forKey: "startDate")!+"T00:00:00.0000",
                                                        monthCount: UserDefaults.standard.integer(forKey: "monthCount"),
                                                        billingDay: UserDefaults.standard.integer(forKey: "billingDay"),
                                                        totalAmount: UserDefaults.standard.integer(forKey: "totalAmount"))

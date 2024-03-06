@@ -611,7 +611,7 @@ extension SubscribeVC: UITableViewDelegate {
             
             objectContent.then {
                 $0.font = .body1
-                $0.text = "매월 " + selectedText
+                $0.text = selectedText
                 $0.textColor = UIColor(named: "black")
                 $0.backgroundColor = UIColor(named: "white")
                 $0.layer.borderColor = UIColor(named: "gray03")?.cgColor
